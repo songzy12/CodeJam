@@ -1,8 +1,9 @@
 from playwright.sync_api import sync_playwright
 
 HOSTNAME = "https://codingcompetitions.withgoogle.com"
-
-YEARS = [x for x in range(2013, 2023)]
+YEARS = [2013]
+# PORXY_SERVER = "http://localhost:10809"
+PORXY_SERVER = "http://172.29.128.1:10809"
 
 
 def get_archive_link(year):
@@ -14,21 +15,44 @@ def get_full_link(path):
     return HOSTNAME + path
 
 
-round_name_to_link = {}
 with sync_playwright() as p:
-    browser = p.chromium.launch(proxy={"server": "http://localhost:10809"},
-                                headless=False)
+    round_name_to_link = {}
+
+    browser = p.chromium.launch(proxy={"server": PORXY_SERVER}, headless=False)
     page = browser.new_page()
 
     for year in YEARS:
         page.goto(get_archive_link(year))
-        for schedule_row in page.query_selector_all(
+        page.wait_for_selector(
+            '//div[@class="schedule-row schedule-row__past"]')
+        for round in page.query_selector_all(
                 '//div[@class="schedule-row schedule-row__past"]'):
-            round_name = schedule_row.query_selector("//span").inner_text()
-            round_link = schedule_row.query_selector("//a").get_attribute(
-                "href")
-            round_name_to_link[round_name] = get_full_link(round_link)
-    browser.close()
+            round_name = round.query_selector("//span").inner_text()
+            round_link = round.query_selector("//a").get_attribute("href")
+            round_name_to_link[round_name] = round_link
 
-print(len(round_name_to_link))
-print(round_name_to_link)
+    print(round_name_to_link)
+
+    for round_name, round_link in round_name_to_link.items():
+        problem_title_to_link = {}
+
+        print(get_full_link(round_link))
+        page.goto(get_full_link(round_link))
+        for problem in page.query_selector_all(
+                '//div[@class="problems-nav-selector-item-container section-row-column"]'
+        ):
+            problem_title = problem.query_selector("//p").inner_text()
+            problem_link = problem.query_selector("//a").get_attribute("href")
+            problem_title_to_link[problem_title] = problem_link
+
+        print(problem_title_to_link)
+
+        for problem_title, problem_link in problem_title_to_link.items():
+            print(get_full_link(problem_link))
+
+            page.goto(get_full_link(problem_link) + "#problem")
+            problem = page.query_selector(
+                '//div[@class="problem-description problem-analysis-detail"]')
+            print(problem.inner_html())
+
+    browser.close()
