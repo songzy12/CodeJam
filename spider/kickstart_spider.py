@@ -55,4 +55,7 @@ with sync_playwright() as p:
                 '//div[@class="problem-description problem-analysis-detail"]')
             print(problem.inner_html())
 
+            # TODO: also crawl analysis
+            # page.goto(get_full_link(problem_link) + "#analysis")
+
     browser.close()
