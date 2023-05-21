@@ -22,6 +22,7 @@ class KickstartSpider(Spider):
             },
             "headless": False
         },
+        # TODO: understand why the spider will not run with scrapy's header.
         "PLAYWRIGHT_PROCESS_REQUEST_HEADERS": None
     }
 
