@@ -1,9 +1,6 @@
-*.in
-*.out
-*.txt
 *.exe
-*.zip
 *.class
 *.pyc
 
+*.zip
 exp/
