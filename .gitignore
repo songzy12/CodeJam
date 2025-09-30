@@ -4,3 +4,6 @@
 
 *.zip
 exp/
+
+*.txt
+tmp/
