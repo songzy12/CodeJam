@@ -7,3 +7,4 @@ exp/
 
 *.txt
 tmp/
+test_data*/
