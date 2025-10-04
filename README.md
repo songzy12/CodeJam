@@ -1,5 +1,6 @@
-Official Archive: https://github.com/google/coding-competitions-archive
+Official Archive: 
+- https://github.com/google/coding-competitions-archive
 
-https://codeforces.com/blog/entry/113809
-
-https://zibada.guru/gcj/
+Unofficial Archive: 
+- https://zibada.guru/gcj/
+- https://zibada.guru/gcj/profile/songzy12

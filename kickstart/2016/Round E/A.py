@@ -1,15 +1,23 @@
-T = int(raw_input())
-for t in range(1, T+1):
-    def compute(n, p):
-        if n % p:
-            return n / p, n % p
-        return n / p - 1, p
-            
-    S = raw_input()
-    I, J = map(int, raw_input().split())
+# https://zibada.guru/gcj/ks2016e/problems/#A
+
+
+def div_mod(n, p):
+    return n // p, n % p
+
+
+def compute_prefix(S, I):
     L = len(S)
-    ni, i = compute(I, L)
-    nj, j = compute(J, L)
-    ans = S.count('B') * nj + S[:j].count('B')
-    ans -= S.count('B') * ni + S[:i-1].count('B')
-    print 'Case #%d: %d' % (t, ans)
+    div, mod = div_mod(I, L)
+    return S.count('B') * div + S[:mod].count('B')
+
+
+def compute(S, I, J):
+    return compute_prefix(S, J) - compute_prefix(S, I-1)
+
+
+T = int(input())
+for t in range(1, T+1):
+    S = input()
+    I, J = map(int, input().split())
+    ans = compute(S, I, J)
+    print('Case #%d: %d' % (t, ans))
