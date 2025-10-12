@@ -3,3 +3,5 @@ https://github.com/google/coding-competitions-archive/tree/main/kickstart/2016/r
 https://zibada.guru/gcj/ks2016b/
 
 https://zibada.guru/gcj/ks2016b/problems/
+
+https://codeforces.com/blog/entry/46812
