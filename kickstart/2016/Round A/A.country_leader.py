@@ -7,10 +7,16 @@ def count_distinct_chars(name):
     return len(set(name.replace(' ', '')))
 
 
+def get_sort_key(name):
+    """
+    First by distinct char count (descending)
+    Then by lexicographical order (ascending)
+    """
+    return (-count_distinct_chars(name), name)
+
+
 def compute_leader(names):
-    # First by distinct char count (descending)
-    # Then by lexicographical order (ascending)
-    names.sort(key=lambda name: (-count_distinct_chars(name), name))
+    names.sort(key=get_sort_key)
     return names[0]
 
 
