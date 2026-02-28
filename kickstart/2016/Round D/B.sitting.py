@@ -1,4 +1,6 @@
-T = int(raw_input())
+# https://zibada.guru/gcj/ks2016d/problems/#B
+
+T = int(input())
 for t in range(1, T+1):
     def compute(row, col):
         if col <= 0:
@@ -6,13 +8,13 @@ for t in range(1, T+1):
         if r <= 2:
             return r * (c - c / 3)
         return r * c - r * c / 3
-        
-    r, c = map(int, raw_input().split())
+
+    r, c = map(int, input().split())
     if r > c:
-        r, c = c, r # this is important!!!
+        r, c = c, r  # this is important!!!
     ans = compute(r, c)
-    
-    print 'Case #%d: %d' % (t, ans)
+
+    print('Case #%d: %d' % (t, ans))
 
 '''
 xox xox xox ...

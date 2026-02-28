@@ -1,1 +1,5 @@
-https://codingcompetitions.withgoogle.com/kickstart/round/0000000000201db8
+https://github.com/google/coding-competitions-archive/tree/main/kickstart/2016/round_d
+
+https://zibada.guru/gcj/ks2016d/
+
+https://zibada.guru/gcj/ks2016d/problems/

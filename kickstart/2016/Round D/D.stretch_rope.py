@@ -1,15 +1,18 @@
-T = int(raw_input())
+# https://zibada.guru/gcj/ks2016d/problems/#D
+
+T = int(input())
 for t in range(1, T+1):
-    N, M, L = map(int, raw_input().split())
+    N, M, L = map(int, input().split())
     P = []
     A = []
     B = []
     for n in range(N):
-        a, b, p = map(int, raw_input().split())
+        a, b, p = map(int, input().split())
         P += p,
         A += a,
         B += b,
     MAXP = sum(P) + 1
+
     def dp(index, left, right, value):
         if value > M:
             return MAXP
@@ -21,7 +24,7 @@ for t in range(1, T+1):
             return MAXP
         return min(dp(index+1, left+A[index], right+B[index], value+P[index]),
                    dp(index+1, left, right, value))
-    
+
     '''
     def compute():
         cost = sum(P) + 1
@@ -44,6 +47,6 @@ for t in range(1, T+1):
         return cost
     ans = compute()
     '''
-        
+
     ans = dp(0, 0, 0, 0)
-    print 'Case #%d: %s' % (t, str(ans) if ans != MAXP else 'IMPOSSIBLE')
+    print('Case #%d: %s' % (t, str(ans) if ans != MAXP else 'IMPOSSIBLE'))
