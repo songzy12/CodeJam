@@ -56,5 +56,5 @@ $$
 The starting point is:
 
 $$
-f(p) = 0, \qquad \text{for } |p| = 0
+f^2(p) = 0, \qquad \text{for } |p| = 0
 $$
