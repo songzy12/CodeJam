@@ -1,10 +1,13 @@
-T = int(raw_input())
+# https://zibada.guru/gcj/ks2016c/problems/#D
+
+T = int(input())
 for t in range(1, T+1):
-    N = int(raw_input())
+    N = int(input())
     soldiers = []
     for n in range(N):
-        a, d = map(int, raw_input().split())
+        a, d = map(int, input().split())
         soldiers += (a, d),
+
     def win(soldiers):
         if not soldiers:
             return False
@@ -12,9 +15,9 @@ for t in range(1, T+1):
         md = max([x[1] for x in soldiers])
         if (ma, md) in soldiers:
             return True
-        soldiers = filter(lambda x: x[0] != ma and x[1] != md, soldiers)
+        soldiers = list(filter(lambda x: x[0] != ma and x[1] != md, soldiers))
         return win(soldiers)
-    print "Case #%d: %s" % (t, "YES" if win(soldiers) else "NO")
+    print("Case #%d: %s" % (t, "YES" if win(soldiers) else "NO"))
 
 # if tha max attack and defense is the same soldier
 # then Alice will choose him, done.

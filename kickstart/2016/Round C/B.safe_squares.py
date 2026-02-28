@@ -1,6 +1,8 @@
-T = input()
+# https://zibada.guru/gcj/ks2016c/problems/#B
+
+T = int(input())
 for t in range(1, T+1):
-    R, C, K = map(int, raw_input().split())
+    R, C, K = map(int, input().split())
     # R, C \in [1, 3000], K \in  [0, 3000]
     grid = [[0 for i in range(C+1)] for j in range(R+1)]
     for i in range(R+1):
@@ -8,12 +10,12 @@ for t in range(1, T+1):
     for j in range(C+1):
         grid[-1][j] = 1
     for j in range(K):
-        r, c = map(int, raw_input().split())
+        r, c = map(int, input().split())
         grid[r][c] = 1
 
     # the maximum possible side length as the left top corner
-    dp = [[0 for i in range(C + 1)] for j in range(R + 1)] 
-    
+    dp = [[0 for i in range(C + 1)] for j in range(R + 1)]
+
     for i in range(R, -1, -1):
         for j in range(C, -1, -1):
             if grid[i][j]:
@@ -28,5 +30,4 @@ for t in range(1, T+1):
     for i in range(R+1):
         for j in range(C+1):
             ans += dp[i][j]
-    print "Case #%d: %d" % (t, ans)
-
+    print("Case #%d: %d" % (t, ans))

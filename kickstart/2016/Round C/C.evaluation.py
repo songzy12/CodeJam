@@ -1,13 +1,15 @@
+# https://zibada.guru/gcj/ks2016c/problems/#C
+
 from collections import defaultdict
 
-T = int(raw_input())
+T = int(input())
 
 for t in range(1, T+1):
     m = defaultdict(list)
     count = defaultdict(int)
-    N = int(raw_input())
+    N = int(input())
     for n in range(N):
-        exp = raw_input()
+        exp = input()
         v, r = exp.split('=')
         l = r.split('(')[-1].split(')')[0].split(',')
         if not l or not l[0]:
@@ -22,5 +24,5 @@ for t in range(1, T+1):
                 for x in m[key]:
                     count[x] -= 1
                 count.pop(key)
-    print 'Case #%d: %s' % (t, 'GOOD' if len
-                            (count) == 0 else 'BAD')
+    print('Case #%d: %s' % (t, 'GOOD' if len
+                            (count) == 0 else 'BAD'))
