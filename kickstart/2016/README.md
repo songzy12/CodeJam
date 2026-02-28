@@ -1,1 +1,1 @@
-https://codingcompetitions.withgoogle.com/kickstart/archive/2016
+https://github.com/google/coding-competitions-archive/tree/main/kickstart/2016/
