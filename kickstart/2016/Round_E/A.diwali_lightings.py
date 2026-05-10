@@ -1,13 +1,8 @@
 # https://zibada.guru/gcj/ks2016e/problems/#A
 
-
-def div_mod(n, p):
-    return n // p, n % p
-
-
 def compute_prefix(S, I):
     L = len(S)
-    div, mod = div_mod(I, L)
+    div, mod = I // L, I % L
     return S.count('B') * div + S[:mod].count('B')
 
 
