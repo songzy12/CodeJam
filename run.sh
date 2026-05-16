@@ -12,6 +12,9 @@ run_test() {
     trap 'rm -f "$tmp_output_path"' EXIT
 
     echo "Running on $label..."
+    echo "Input file: $input_path"
+    echo "Expected output file: $expected_path"
+    echo "Temporary output file: $tmp_output_path"
     if [[ ! -f "$input_path" ]]; then
         echo "Error: Input file $input_path not found."
         return 1
